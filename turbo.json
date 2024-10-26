@@ -1,0 +1,67 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": ["**/.env"],
+  "ui": "stream",
+  "tasks": {
+    "build": {
+      "env": [
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+        "CLERK_SECRET_KEY",
+        "VERCEL_URL",
+        "NEXT_PUBLIC_VERCEL_URL",
+        "NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL",
+        "VERCEL_PROJECT_PRODUCTION_URL"
+      ],
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"]
+    },
+    "dev": {
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "persistent": true,
+      "cache": false
+    },
+    "format": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "start": {
+      "cache": false
+    },
+    "test": {
+      "env": [
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+        "CLERK_SECRET_KEY",
+        "VERCEL_URL",
+        "NEXT_PUBLIC_VERCEL_URL",
+        "NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL",
+        "VERCEL_PROJECT_PRODUCTION_URL"
+      ],
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "cache": true
+    },
+    "test-coverage": {
+      "env": [
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+        "CLERK_SECRET_KEY",
+        "VERCEL_URL",
+        "NEXT_PUBLIC_VERCEL_URL",
+        "NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL",
+        "VERCEL_PROJECT_PRODUCTION_URL"
+      ],
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "cache": true,
+      "outputs": ["coverage"]
+    },
+    "test-e2e": {
+      "env": ["BASE_URL"],
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "cache": false
+    },
+    "typeCheck": {
+      "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+    }
+  }
+}

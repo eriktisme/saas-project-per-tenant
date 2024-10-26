@@ -1,0 +1,8 @@
+{
+  "name": "@internal/tsconfig",
+  "files": [
+    "base.json",
+    "node.json",
+    "react-library.json"
+  ]
+}
